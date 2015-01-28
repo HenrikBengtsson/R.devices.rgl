@@ -1,0 +1,41 @@
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# IMPORTS
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+importFrom("R.utils", "Arguments")
+importFrom("R.utils", "use")
+importFrom("R.utils", "setOption")
+importFrom("R.utils", "printf")
+importFrom("R.utils", "isFile")
+importFrom("R.methodsS3", "throw")
+importFrom("R.oo", "trim")
+
+## import("rgl")
+## importFrom("rgl", "open3d")
+## importFrom("rgl", "rgl.close")
+## importFrom("rgl", "rgl.cur")
+## importFrom("rgl", "rgl.set")
+## importFrom("rgl", "rgl.dev.list")
+## importFrom("rgl", "rgl.useNULL")
+
+import("R.devices")
+## importFrom("R.devices", "devOptions")
+## importFrom("R.devices", "DevEvalFileProduct")
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# EXPORTS
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+export("devEvalRGL")
+
+export("useRGL")
+export("webgl")
+export("toWebGL")
+export("devEvalRGL")
+export("devNewRGL")
+export("devOffRGL")
+export("devDoneRGL")
+export("devIsOpenRGL")
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# DECLARATIONS
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+S3method("as.character", "DevEvalProductField")

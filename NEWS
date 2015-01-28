@@ -1,0 +1,10 @@
+
+Package: R.devices.rgl
+======================
+
+Version: 0.1.0 [2015-01-28]
+o Created package.
+
+
+Version: 0.0.1 [2014-09-02]
+o Initial set of functions created.
