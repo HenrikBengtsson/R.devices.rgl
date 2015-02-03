@@ -2,7 +2,7 @@
 Package: R.devices.rgl
 ======================
 
-Version: 0.1.0-9000 [2015-02-03]
+Version: 0.1.1 [2015-02-03]
 o Added argument 'class' for injecting a 'class' attribute to the
   HTML canvas generated when RGL device is closed with devOffRGL().
 o Added package vignette.
