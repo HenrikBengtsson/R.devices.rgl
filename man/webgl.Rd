@@ -25,7 +25,7 @@
 
 \usage{
 webgl(filename="Rplot.WebGL.html", width=480L, height=480L, font=c("sans-serif", "Arial",
-  "Helvetica"), useNULL=TRUE, snapshot=FALSE, header=TRUE, ...)
+  "Helvetica"), useNULL=TRUE, snapshot=FALSE, header=TRUE, class=c("rglWebGL"), ...)
 }
 
 \arguments{
@@ -45,6 +45,8 @@ webgl(filename="Rplot.WebGL.html", width=480L, height=480L, font=c("sans-serif",
     main HTML page.  By using \code{\link[base:logical]{TRUE}}, each figure will include/define
     the same code, which slightly increases the output size, but
     is safe and valid to do.}
+  \item{class}{A \code{\link[base]{character}} \code{\link[base]{vector}} specifying the CSS classes on
+    the HTML canvas object that displays the WebGL graphics.}
   \item{...}{Additional arguments passed to \code{\link[rgl]{writeWebGL}} upon
     closing the opened device.}
 }

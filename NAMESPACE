@@ -7,6 +7,8 @@ importFrom("R.utils", "setOption")
 importFrom("R.utils", "printf")
 importFrom("R.utils", "isFile")
 importFrom("R.methodsS3", "throw")
+importFrom("R.oo", "Package")
+importFrom("R.oo", "startupMessage")
 importFrom("R.oo", "trim")
 
 ## import("rgl")
@@ -24,6 +26,7 @@ import("R.devices")
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # EXPORTS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+export("R.devices.rgl")
 export("devEvalRGL")
 
 export("useRGL")

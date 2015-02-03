@@ -1,0 +1,88 @@
+<%@meta language="R-vignette" content="--------------------------------
+  DIRECTIVES FOR R:
+
+  %\VignetteIndexEntry{R.devices.rgl: Examples}
+  %\VignetteAuthor{Henrik Bengtsson}
+  %\VignetteKeyword{R}
+  %\VignetteKeyword{RSP}
+  %\VignetteKeyword{rgl}
+  %\VignetteKeyword{WebGL}
+  %\VignetteEngine{R.rsp::rsp}
+  %\VignetteTangle{FALSE}
+--------------------------------------------------------------------"%>
+<% t0 <- Sys.time() %>
+<% R.rsp <- R.oo::Package("R.rsp") %>
+<%
+options("withCapture/newline"=FALSE)
+options(width=110L)
+library("R.utils") ## withCapture()
+library("R.devices")
+library("R.devices.rgl")
+useRGL(useNULL=TRUE)
+%>
+
+<%--- HTML <style> should really be in the <head> not <body> ---%>
+<style type="text/css">
+.rglWebGL {
+  margin-left: auto;
+  margin-right: auto;
+  display: block; 
+  border: solid 1px #cccccc;
+}
+</style>
+
+
+# <%@meta name="title"%>
+
+<%@meta name="author"%> on <%=format(as.Date(R.rsp$date), format="%B %d, %Y")%>
+
+```r
+<%=withCapture({
+library('R.devices.rgl')
+})%>
+```
+
+## Examples
+
+### Example: 3D scatter plot
+```r
+<%=withCapture({
+x <- sort(rnorm(1000))
+y <- rnorm(1000)
+z <- rnorm(1000) + atan2(x, y)
+})%>
+```
+<%=toWebGL("plot3d", tags="example", {
+  plot3d(x, y, z, col=rainbow(1000))
+})%>
+
+
+### Example: 3D shapes
+This example is taken from the vignette of the [rgl] package.
+<%=toWebGL("shapes", tags="example", {
+layout3d(matrix(1:16, nrow=4, ncol=4), heights=c(1,3,1,3))
+cols <- rainbow(7)
+text3d(0,0,0,"tetrahedron3d"); next3d()
+shade3d(tetrahedron3d(col=cols[1])); next3d()
+text3d(0,0,0,"cube3d"); next3d()
+shade3d(cube3d(col=cols[2])); next3d()
+text3d(0,0,0,"octahedron3d"); next3d()
+shade3d(octahedron3d(col=cols[3])); next3d()
+text3d(0,0,0,"dodecahedron3d"); next3d()
+shade3d(dodecahedron3d(col=cols[4])); next3d()
+text3d(0,0,0,"icosahedron3d"); next3d()
+shade3d(icosahedron3d(col=cols[5])); next3d()
+text3d(0,0,0,"cuboctahedron3d"); next3d()
+shade3d(cuboctahedron3d(col=cols[6])); next3d()
+text3d(0,0,0,"oh3d"); next3d()
+shade3d(oh3d(col=cols[7]))
+})%>
+
+
+## Appendix
+To install R.devices.rgl, do:
+```r
+source('http://callr.org/install#HenrikBengtsson/R.devices.rgl')
+```
+
+[rgl]: http://cran.r-project.org/package=rgl

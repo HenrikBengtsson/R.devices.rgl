@@ -33,6 +33,8 @@
 #     main HTML page.  By using @TRUE, each figure will include/define
 #     the same code, which slightly increases the output size, but
 #     is safe and valid to do.}
+#   \item{class}{A @character @vector specifying the CSS classes on
+#     the HTML canvas object that displays the WebGL graphics.}
 #   \item{...}{Additional arguments passed to @see "rgl::writeWebGL" upon
 #     closing the opened device.}
 # }
@@ -72,7 +74,7 @@
 # @keyword device
 # @keyword utilities
 #*/###########################################################################
-webgl <- function(filename="Rplot.WebGL.html", width=480L, height=480L, font=c("sans-serif", "Arial", "Helvetica"), useNULL=TRUE, snapshot=FALSE, header=TRUE, ...) {
+webgl <- function(filename="Rplot.WebGL.html", width=480L, height=480L, font=c("sans-serif", "Arial", "Helvetica"), useNULL=TRUE, snapshot=FALSE, header=TRUE, class=c("rglWebGL"), ...) {
   oopts <- useRGL(useNULL=useNULL)
   on.exit(options(oopts))
 
@@ -97,6 +99,11 @@ webgl <- function(filename="Rplot.WebGL.html", width=480L, height=480L, font=c("
   # Argument 'height':
   height <- Arguments$getNumeric(height, range=c(0,Inf))
 
+  # Argument 'class':
+  if (!is.null(class)) {
+    class <- Arguments$getCharacters(class)
+  }
+
   # Argument 'font':
   font <- unlist(strsplit(font, split=",", fixed=TRUE))
   font <- paste(trim(font), collapse=",")
@@ -115,7 +122,7 @@ webgl <- function(filename="Rplot.WebGL.html", width=480L, height=480L, font=c("
   # (a) Record device specific parameters needed when closing
   #     the device.
   args <- list(pathname=pathname, header=header, snapshot=snapshot,
-               width=width, height=height, font=font, ...)
+               width=width, height=height, font=font, class=class, ...)
   attr(args, "timestamp") <- Sys.time()
 ##  mstr(args)
 
@@ -134,6 +141,9 @@ webgl <- function(filename="Rplot.WebGL.html", width=480L, height=480L, font=c("
 
 ############################################################################
 # HISTORY:
+# 2015-02-03
+# o Added argument 'class' for injecting a 'class' attribute to the
+#   HTML canvas generated when RGL device is closed with devOffRGL().
 # 2015-01-28
 # o DOCUMENTATION: Added Rdoc help.
 # o Added useRGL().

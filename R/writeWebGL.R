@@ -1,5 +1,5 @@
 # Writes current RGL device to a WebGL HTML file (atomically)
-.writeWebGL <- function(pathname, header=TRUE, ...) {
+.writeWebGL <- function(pathname, header=TRUE, class=c("rglWebGL"), ...) {
   # Argument 'pathname':
   pathname <- Arguments$getWritablePathname(pathname)
 
@@ -62,6 +62,18 @@
     bfr <- bfr[-idx]
   }
 
+  # Add 'class' attribute to HTML canvas?
+  if (length(class) > 0L) {
+    pattern <- sprintf('(<canvas)( *)(id=")', prefix);
+    pattern <- sprintf('(<canvas)( *)(id="%scanvas")', prefix);
+    idx <- grep(pattern, bfr)
+    if (length(idx) > 1L) {
+      throw(sprintf("Detected %d HTML canvases, but there should be exactly one.", length(idx)))
+    }
+    replace <- sprintf('\\1 class="%s" \\3', paste(class, collapse=" "))
+    bfr[idx] <- gsub(pattern, replace, bfr[idx])
+  }
+
   # (f) Cleanup
   # Remove auxillary files
   file.remove(c("CanvasMatrix.js", "WebGL.tmpl", "WebGL.html"))
@@ -80,6 +92,8 @@
 
 ############################################################################
 # HISTORY:
+# 2015-02-03
+# o Now .writeWebGL() can inject a 'class' attribute to the HTML canvas.
 # 2015-01-28
 # o DOCUMENTATION: Added Rdoc help.
 # o Added useRGL().
