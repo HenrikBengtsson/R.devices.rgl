@@ -48,6 +48,13 @@ useRGL <- function(useNULL=TRUE, ...) {
     use("rgl", ...)
   }
 
+  ## Compatibility check
+  assertCompatibility <- getOption("R.devices.rgl::assertCompatibility", TRUE)
+  ver <- as.character(packageVersion("rgl"))
+  if (assertCompatibility && compareVersion(ver, "0.95.1201")) {
+    throw("For compatibility reasons, the current version of R.devices.rgl requires rgl <= 0.95.1201: ", ver)
+  }
+
   invisible(oopts)
 } # useRGL()
 
