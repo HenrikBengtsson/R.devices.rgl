@@ -8,7 +8,7 @@ Authors@R: c(person("Henrik", "Bengtsson", role=c("aut", "cre", "cph"),
                                           email = "henrikb@braju.com"))
 Author: Henrik Bengtsson [aut, cre, cph]
 Maintainer: Henrik Bengtsson <henrikb@braju.com>
-Date: 2015-02-25
+Date: 2015-02-25 
 Title: Simple Functions for Creating WebGL Graphics
 Description: Simple functions for creating WebGL graphics (using the rgl package) and include them in dynamically generated HTML documents.
 License: LGPL (>= 2.1)
