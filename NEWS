@@ -2,6 +2,11 @@
 Package: R.devices.rgl
 ======================
 
+Version: 0.1.2 [2015-02-25]
+o ROBUSTNESS: Package now asserts that the installed version of 'rgl'
+  is compatible with the current version of 'R.devices.rgl'.
+
+
 Version: 0.1.1 [2015-02-03]
 o Added argument 'class' for injecting a 'class' attribute to the
   HTML canvas generated when RGL device is closed with devOffRGL().
