@@ -1,5 +1,5 @@
 Package: R.devices.rgl
-Version: 0.1.2
+Version: 0.1.3
 Depends: R (>= 3.1.2)
 Imports: R.methodsS3 (>= 1.7.0), R.oo (>= 1.18.0), R.utils (>= 1.34.0), R.devices (>= 2.13.0)
 Suggests: rgl (>= 0.95.1201), R.rsp (>= 0.20.0)
@@ -8,7 +8,7 @@ Authors@R: c(person("Henrik", "Bengtsson", role=c("aut", "cre", "cph"),
                                           email = "henrikb@braju.com"))
 Author: Henrik Bengtsson [aut, cre, cph]
 Maintainer: Henrik Bengtsson <henrikb@braju.com>
-Date: 2015-02-25 
+Date: 2015-04-09
 Title: Simple Functions for Creating WebGL Graphics
 Description: Simple functions for creating WebGL graphics (using the rgl package) and include them in dynamically generated HTML documents.
 License: LGPL (>= 2.1)

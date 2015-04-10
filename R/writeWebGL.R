@@ -1,5 +1,5 @@
 # Writes current RGL device to a WebGL HTML file (atomically)
-.writeWebGL <- function(pathname, header=TRUE, class=c("rglWebGL"), ...) {
+.writeWebGL <- function(pathname, header=TRUE, id=NULL, class=c("rglWebGL"), ...) {
   # Argument 'pathname':
   pathname <- Arguments$getWritablePathname(pathname)
 
@@ -13,11 +13,14 @@
   fullname <- gsub("[.](WebGL)$", "", fullname, ignore.case=TRUE)
 
   # HTML/Javascript name prefix to use
-  prefix <- sprintf("%s_", gsub("[,]", "_", fullname))
+  prefix <- gsub("[,]", "_", fullname)
+  if (!is.null(id)) prefix <- sprintf("%s_%s", prefix, id)
+  prefix <- sprintf("%s_", prefix)
 
   # Encode prefix character (FIXME)
   prefix <- gsub("[^[:alnum:]]", "_", prefix)
   prefix <- sub("^([^[:alpha:]])", "_\\1", prefix)
+
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Write RGL plot to WebGL HTML code
